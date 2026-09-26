@@ -53,7 +53,7 @@ export default function About() {
 
           <div className={`about__stats reveal-up${contentVisible ? " is-visible" : ""}`}>
             <AboutStat value={850} label="Events Produced" />
-            <AboutStat value={12} label="Years Running" />
+            <AboutStat value={2} label="Years Experience" />
             <AboutStat value={98} suffix="%" label="Client Retention" />
           </div>
 

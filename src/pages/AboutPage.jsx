@@ -89,7 +89,7 @@ export default function AboutPage() {
 
             <div className={`about__stats reveal-up${storyContentVisible ? " is-visible" : ""}`}>
               <Stat value={850} label="Events Produced" />
-              <Stat value={12} label="Years Running" />
+              <Stat value={2} label="Years Experience" />
               <Stat value={40} suffix="+" label="Crew Members" />
             </div>
           </div>

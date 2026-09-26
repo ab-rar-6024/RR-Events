@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { Play } from "lucide-react";
 import { useReveal, useCounter } from "../hooks";
 import { portfolioItems } from "../data/content";
 import Lightbox from "../components/Lightbox";
 import CtaBanner from "../components/CtaBanner";
+import { Reels, PhotoGrid } from "../components/PortfolioLayout";
 
 function Stat({ value, suffix = "", label }) {
   const [ref, display] = useCounter(value, { suffix });
@@ -24,30 +24,10 @@ const groupOrder = [
   { key: "brand", label: "Brand Activations" },
 ];
 
-function CaseStudyRow({ item, index, onOpen }) {
-  const [ref, visible] = useReveal();
-  return (
-    <div
-      ref={ref}
-      className={`portfolio-case${index % 2 === 1 ? " portfolio-case--reverse" : ""} reveal-up${visible ? " is-visible" : ""}`}
-      onClick={onOpen}
-    >
-      <div className="portfolio-case__img">
-        <img src={item.img} alt={item.title} loading="lazy" />
-        {item.video && <span className="portfolio-case__play"><Play size={18} /> Watch</span>}
-      </div>
-      <div className="portfolio-case__body">
-        <span className="eyebrow">{item.label}</span>
-        <h3>{item.title}</h3>
-        <p>{item.brief}</p>
-      </div>
-    </div>
-  );
-}
-
 export default function PortfolioPage() {
   const [headRef, headVisible] = useReveal();
   const [lightboxIndex, setLightboxIndex] = useState(null);
+  const entries = portfolioItems.map((item, index) => ({ item, index }));
 
   return (
     <>
@@ -61,7 +41,7 @@ export default function PortfolioPage() {
           </h1>
           <p className={`page-hero__desc reveal-up${headVisible ? " is-visible" : ""}`}>
             Every project here got the same walk-through, the same run sheet, the same crew that
-            shows up two hours before anyone else. A few of the stories behind the photos.
+            shows up two hours before anyone else.
           </p>
         </div>
       </section>
@@ -69,29 +49,23 @@ export default function PortfolioPage() {
       <section className="portfolio-stats">
         <div className="container portfolio-stats__grid">
           <Stat value={850} label="Events Produced" />
-          <Stat value={12} label="Years Running" />
+          <Stat value={2} label="Years Experience" />
           <Stat value={6} label="Categories Covered" />
           <Stat value={98} suffix="%" label="Client Retention" />
         </div>
       </section>
 
       {groupOrder.map((group) => {
-        const items = portfolioItems.filter((i) => i.cat === group.key);
-        if (!items.length) return null;
+        const inGroup = entries.filter((e) => e.item.cat === group.key);
+        if (!inGroup.length) return null;
         return (
           <section className="portfolio-group" key={group.key}>
             <div className="container">
               <h2 className="portfolio-group__title">{group.label}</h2>
-              <div className="portfolio-group__list">
-                {items.map((item) => (
-                  <CaseStudyRow
-                    key={item.title}
-                    item={item}
-                    index={portfolioItems.indexOf(item)}
-                    onOpen={() => setLightboxIndex(portfolioItems.indexOf(item))}
-                  />
-                ))}
-              </div>
+            </div>
+            <Reels entries={inGroup.filter((e) => e.item.video)} onOpen={setLightboxIndex} />
+            <div className="container">
+              <PhotoGrid entries={inGroup.filter((e) => !e.item.video)} onOpen={setLightboxIndex} />
             </div>
           </section>
         );

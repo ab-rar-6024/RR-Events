@@ -34,7 +34,7 @@ export default function Lightbox({ items, startIndex, onClose }) {
         ) : (
           <img src={item.img} alt={item.title} />
         )}
-        <figcaption>{item.title}</figcaption>
+        <figcaption>{item.title}{item.brief && <small>{item.brief}</small>}</figcaption>
       </figure>
     </div>
   );

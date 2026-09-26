@@ -50,7 +50,7 @@ export default function TestimonialsPage() {
           <Stat value={850} label="Events Produced" />
           <Stat value={98} suffix="%" label="Client Retention" />
           <Stat value={40} suffix="+" label="Crew Members" />
-          <Stat value={12} label="Years Running" />
+          <Stat value={2} label="Years Experience" />
         </div>
       </section>
 

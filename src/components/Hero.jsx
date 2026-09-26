@@ -1,18 +1,16 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { gsap } from "gsap";
-import { ArrowUpRight, ChevronDown, Play } from "lucide-react";
+import { ArrowUpRight, ChevronDown } from "lucide-react";
 import { useMagnetic } from "../hooks";
-import VideoLightbox from "./VideoLightbox";
 
-/** Splits a line into words > characters so GSAP can reveal it letter by letter. */
+/** Splits a line into words so GSAP can slide each one in from the side. */
 function SplitLine({ text, accent = false }) {
   return (
     <span className={`hero__line${accent ? " hero__line--accent" : ""}`} aria-hidden="true">
       {text.split(" ").map((word, w) => (
-        <span className="hero__word" key={w}>
-          {[...word].map((ch, c) => <span className="hero__char" key={c}>{ch}</span>)}
-          {" "}
+        <span key={w}>
+          <span className="hero__word"><span className="hero__word-inner">{word}</span></span>{" "}
         </span>
       ))}
     </span>
@@ -21,7 +19,6 @@ function SplitLine({ text, accent = false }) {
 
 export default function Hero() {
   const rootRef = useRef(null);
-  const [showreelOpen, setShowreelOpen] = useState(false);
   const magneticRef = useMagnetic(0.25);
 
   useEffect(() => {
@@ -30,7 +27,7 @@ export default function Hero() {
     if (!root) return;
 
     if (reducedMotion) {
-      root.querySelectorAll(".hero__char, .hero-anim").forEach((el) => {
+      root.querySelectorAll(".hero__word-inner, .hero__rule, .hero-anim").forEach((el) => {
         el.style.opacity = 1;
         el.style.transform = "none";
       });
@@ -38,14 +35,16 @@ export default function Hero() {
     }
 
     const ctx = gsap.context(() => {
-      gsap.from(".hero__char", {
-        yPercent: 115, rotate: 8, opacity: 0, duration: 0.9,
-        ease: "power4.out", stagger: 0.028, delay: 0.35,
-      });
+      const tl = gsap.timeline({ delay: 0.3 });
+      tl.from(".hero__rule", { scaleX: 0, transformOrigin: "left center", duration: 0.8, ease: "power3.out" })
+        .from(".hero__word-inner", {
+          x: -60, opacity: 0, skewX: -14, filter: "blur(10px)",
+          duration: 1.1, ease: "expo.out", stagger: 0.14,
+        }, "-=0.4");
       gsap.fromTo(
         ".hero-anim",
         { opacity: 0, y: 24, filter: "blur(8px)" },
-        { opacity: 1, y: 0, filter: "blur(0px)", duration: 1, ease: "power3.out", stagger: 0.14, delay: 1.3 }
+        { opacity: 1, y: 0, filter: "blur(0px)", duration: 1, ease: "power3.out", stagger: 0.14, delay: 1.2 }
       );
     }, root);
 
@@ -66,6 +65,7 @@ export default function Hero() {
       </div>
 
       <div className="container hero__content">
+        <span className="hero__rule" aria-hidden="true"></span>
         <h1 className="hero__title" aria-label="Designing moments, powering memories.">
           <SplitLine text="Designing Moments," />
           <SplitLine text="Powering Memories." accent />
@@ -76,9 +76,6 @@ export default function Hero() {
         </p>
         <div className="hero__actions hero-anim">
           <Link ref={magneticRef} to="/contact" className="btn btn--accent">Start Planning <ArrowUpRight size={16} /></Link>
-          <button type="button" className="btn btn--text" onClick={() => setShowreelOpen(true)}>
-            <span className="play-dot"><Play size={14} /></span> Watch Showreel
-          </button>
         </div>
       </div>
 
@@ -87,7 +84,6 @@ export default function Hero() {
         <ChevronDown size={16} />
       </a>
 
-      {showreelOpen && <VideoLightbox onClose={() => setShowreelOpen(false)} />}
     </section>
   );
 }
