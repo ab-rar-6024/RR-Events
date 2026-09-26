@@ -327,7 +327,7 @@ em{ font-style:normal; font-family: inherit; color: var(--accent-light); }
 .leadership{ padding:60px 0 140px; background: var(--bg-elevated); }
 .leadership__grid{ display:grid; grid-template-columns:0.75fr 1fr; gap:80px; align-items:start; }
 .leadership__media{ position:relative; overflow:hidden; border-radius: var(--radius); }
-.leadership__media img{ width:100%; height:560px; object-fit:cover; object-position:70% 42%; transition: transform .8s var(--ease-out); }
+.leadership__media img{ width:100%; height:560px; object-fit:cover; object-position:50% 25%; transition: transform .8s var(--ease-out); }
 .leadership__media:hover img{ transform: scale(1.05); }
 .leadership__content > *{ margin-bottom:22px; }
 .leadership__content p{ color: var(--text-muted); }
