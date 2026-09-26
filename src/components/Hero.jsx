@@ -5,6 +5,20 @@ import { ArrowUpRight, ChevronDown, Play } from "lucide-react";
 import { useMagnetic } from "../hooks";
 import VideoLightbox from "./VideoLightbox";
 
+/** Splits a line into words > characters so GSAP can reveal it letter by letter. */
+function SplitLine({ text, accent = false }) {
+  return (
+    <span className={`hero__line${accent ? " hero__line--accent" : ""}`} aria-hidden="true">
+      {text.split(" ").map((word, w) => (
+        <span className="hero__word" key={w}>
+          {[...word].map((ch, c) => <span className="hero__char" key={c}>{ch}</span>)}
+          {" "}
+        </span>
+      ))}
+    </span>
+  );
+}
+
 export default function Hero() {
   const rootRef = useRef(null);
   const [showreelOpen, setShowreelOpen] = useState(false);
@@ -16,7 +30,7 @@ export default function Hero() {
     if (!root) return;
 
     if (reducedMotion) {
-      root.querySelectorAll(".reveal-line span, .hero-anim").forEach((el) => {
+      root.querySelectorAll(".hero__char, .hero-anim").forEach((el) => {
         el.style.opacity = 1;
         el.style.transform = "none";
       });
@@ -24,15 +38,14 @@ export default function Hero() {
     }
 
     const ctx = gsap.context(() => {
-      gsap.from(".reveal-line span", {
-        yPercent: 110, duration: 1, ease: "power4.out", stagger: 0.12, delay: 0.4,
+      gsap.from(".hero__char", {
+        yPercent: 115, rotate: 8, opacity: 0, duration: 0.9,
+        ease: "power4.out", stagger: 0.028, delay: 0.35,
       });
-      // fromTo (not .from): resting CSS state for .hero-anim is already opacity:1,
-      // so a plain .from would compute its "to" state as 0 and never reveal anything.
       gsap.fromTo(
         ".hero-anim",
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 1, ease: "power3.out", stagger: 0.12, delay: 1.0 }
+        { opacity: 0, y: 24, filter: "blur(8px)" },
+        { opacity: 1, y: 0, filter: "blur(0px)", duration: 1, ease: "power3.out", stagger: 0.14, delay: 1.3 }
       );
     }, root);
 
@@ -53,10 +66,14 @@ export default function Hero() {
       </div>
 
       <div className="container hero__content">
-        <h1 className="hero__title">
-          <span className="reveal-line"><span>We bring your</span></span>
-          <span className="reveal-line"><span><em>vision</em> to life.</span></span>
+        <h1 className="hero__title" aria-label="Designing moments, powering memories.">
+          <SplitLine text="Designing Moments," />
+          <SplitLine text="Powering Memories." accent />
         </h1>
+        <p className="hero__desc hero-anim">
+          Concerts, weddings and corporate shows — RR Events brings the stage, sound and crew
+          that turn your vision into a night people remember.
+        </p>
         <div className="hero__actions hero-anim">
           <Link ref={magneticRef} to="/contact" className="btn btn--accent">Start Planning <ArrowUpRight size={16} /></Link>
           <button type="button" className="btn btn--text" onClick={() => setShowreelOpen(true)}>

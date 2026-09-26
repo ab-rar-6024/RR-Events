@@ -236,13 +236,14 @@ em{ font-style:normal; font-family: inherit; color: var(--accent-light); }
 
 .hero__content{ position:relative; z-index:1; max-width:900px; }
 .hero__title{
-  font-family: var(--font-head); font-weight:500; color:#fff;
-  font-size: clamp(2.6rem, 6.4vw, 5.4rem); line-height:1.04; letter-spacing:-0.025em; font-weight:700; margin-bottom:38px;
+  font-family: var(--font-head); color:#fff; font-weight:600;
+  font-size: clamp(2rem, 4.4vw, 3.7rem); line-height:1.1; letter-spacing:-0.02em; margin-bottom:22px;
 }
-.reveal-line{ display:block; overflow:hidden; }
-.reveal-line span{ display:block; }
-
-.hero__desc{ color: rgba(243,241,236,0.78); font-size:1.15rem; max-width:520px; margin-bottom:36px; font-family: var(--font-head); line-height:1.5; }
+.hero__line{ display:block; }
+.hero__word{ display:inline-block; overflow:hidden; vertical-align:top; padding-bottom:.08em; }
+.hero__char{ display:inline-block; will-change: transform; }
+.hero__line--accent .hero__char{ color: var(--accent-light); text-shadow: 0 0 34px rgba(139,134,242,0.35); }
+.hero__desc{ color: rgba(243,241,236,0.78); font-size:1.05rem; max-width:500px; margin-bottom:34px; line-height:1.65; }
 .hero__actions{ display:flex; align-items:center; gap:36px; flex-wrap:wrap; }
 
 .scroll-cue{
