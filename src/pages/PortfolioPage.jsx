@@ -3,6 +3,7 @@ import { useReveal, useCounter } from "../hooks";
 import { portfolioItems } from "../data/content";
 import Lightbox from "../components/Lightbox";
 import CtaBanner from "../components/CtaBanner";
+import Vip from "../components/Vip";
 import { Reels, PhotoGrid } from "../components/PortfolioLayout";
 
 function Stat({ value, suffix = "", label }) {
@@ -78,6 +79,8 @@ export default function PortfolioPage() {
           onClose={() => setLightboxIndex(null)}
         />
       )}
+
+      <Vip />
 
       <CtaBanner />
     </>

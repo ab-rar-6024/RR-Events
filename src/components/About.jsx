@@ -47,7 +47,7 @@ export default function About() {
 
           <ul className={`about__list reveal-up${contentVisible ? " is-visible" : ""}`}>
             {highlights.map((item) => (
-              <li key={item}>{item} <ArrowUpRight size={18} /></li>
+              <li key={item}>{item}</li>
             ))}
           </ul>
 

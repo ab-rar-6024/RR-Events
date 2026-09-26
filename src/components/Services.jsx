@@ -1,4 +1,3 @@
-import { ArrowUpRight } from "lucide-react";
 import { useReveal } from "../hooks";
 import { services } from "../data/content";
 
@@ -11,7 +10,6 @@ function ServiceRow({ service }) {
         <h3 className="service-row__title">{service.title}</h3>
         <p className="service-row__desc">{service.desc}</p>
       </div>
-      <span className="service-row__arrow"><ArrowUpRight size={22} /></span>
     </div>
   );
 }
