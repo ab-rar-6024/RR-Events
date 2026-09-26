@@ -1,4 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
+import { Link } from "react-router-dom";
+import { Play, ArrowUpRight } from "lucide-react";
 import { useReveal } from "../hooks";
 import { portfolioItems, filters } from "../data/content";
 import Lightbox from "./Lightbox";
@@ -39,6 +41,7 @@ function PortfolioCard({ item, match, onOpen }) {
   return (
     <figure ref={ref} className={classes} onClick={onOpen}>
       <img src={item.img} alt={item.title} loading="lazy" />
+      {item.video && <span className="portfolio-item__play" aria-label="Video"><Play size={14} /></span>}
       <figcaption>
         <span>{item.label}</span>
         <h3>{item.title}</h3>
@@ -53,8 +56,9 @@ export default function Portfolio() {
   const [activeFilter, setActiveFilter] = useState("all");
   const [lightboxIndex, setLightboxIndex] = useState(null);
 
+  // "All Work" shows only featured pieces here; the full library lives on /portfolio.
   const matches = useMemo(
-    () => portfolioItems.map((item) => activeFilter === "all" || item.cat === activeFilter),
+    () => portfolioItems.map((item) => (activeFilter === "all" ? !!item.featured : item.cat === activeFilter)),
     [activeFilter]
   );
 
@@ -89,6 +93,12 @@ export default function Portfolio() {
               onOpen={() => setLightboxIndex(index)}
             />
           ))}
+        </div>
+
+        <div className="portfolio__more">
+          <Link to="/portfolio" className="btn btn--outline">
+            View Full Portfolio <ArrowUpRight size={16} />
+          </Link>
         </div>
       </div>
 

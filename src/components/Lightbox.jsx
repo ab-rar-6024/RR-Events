@@ -29,7 +29,11 @@ export default function Lightbox({ items, startIndex, onClose }) {
       <button className="lightbox__prev" aria-label="Previous" onClick={prev}><ChevronLeft size={20} /></button>
       <button className="lightbox__next" aria-label="Next" onClick={next}><ChevronRight size={20} /></button>
       <figure>
-        <img src={item.img} alt={item.title} />
+        {item.video ? (
+          <video key={item.video} className="lightbox__video" src={item.video} poster={item.img} controls autoPlay playsInline />
+        ) : (
+          <img src={item.img} alt={item.title} />
+        )}
         <figcaption>{item.title}</figcaption>
       </figure>
     </div>

@@ -47,31 +47,31 @@ export const processSteps = [
 
 export const portfolioItems = [
   {
-    cat: "wedding", tall: false,
+    cat: "wedding", featured: true, tall: false,
     img: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80",
     title: "The Aravali Sangeet", label: "Wedding",
     brief: "A three-day destination wedding in Udaipur, built around a golden-hour sangeet and a fully custom floral mandap.",
   },
   {
-    cat: "corporate", tall: false,
+    cat: "corporate", featured: true, tall: false,
     img: "/media/stage-ceremony.jpg",
     title: "MSSW — 75 Years of Excellence", label: "Corporate",
     brief: "Full production for Madras School of Social Work's 75th anniversary — stage, AV, guest of honour hosting and floral design.",
   },
   {
-    cat: "concert", tall: true,
+    cat: "concert", featured: true, tall: true,
     img: "/media/live-performance.jpg",
     title: "Traditional Percussion Showcase", label: "Concert",
     brief: "Live stage sound and lighting for a traditional percussion ensemble as part of a campus cultural program.",
   },
   {
-    cat: "brand", tall: false,
+    cat: "brand", featured: true, tall: false,
     img: "https://images.unsplash.com/photo-1541532713592-79a0317b6b77?auto=format&fit=crop&w=900&q=80",
     title: "Lumen Product Launch", label: "Brand Activation",
     brief: "An after-hours launch party built to turn first-time guests into a room full of brand advocates.",
   },
   {
-    cat: "wedding", tall: false,
+    cat: "wedding", featured: true, tall: false,
     img: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=900&q=80",
     title: "Coastal Vows, Goa", label: "Wedding",
     brief: "A 120-guest beachside wedding with a long-table reception styled entirely in whites and sea greens.",
@@ -89,7 +89,7 @@ export const portfolioItems = [
     brief: "A felicitation ceremony and cultural showcase produced alongside a partner NGO's community program.",
   },
   {
-    cat: "corporate", tall: false,
+    cat: "corporate", featured: true, tall: false,
     img: "/media/crowd-audience.jpg",
     title: "Campus Assembly Experience", label: "Corporate",
     brief: "Outdoor seating, sound and crowd flow for a 500-plus student assembly across a single campus day.",
@@ -108,11 +108,95 @@ export const portfolioItems = [
   },
 ];
 
+// Video items: `img` is the poster frame, `video` is the playable clip.
+portfolioItems.push(
+  {
+    cat: "dance", tall: true, featured: true, video: "/media/portfolio/classical-dance.mp4",
+    img: "/media/portfolio/classical-dance.jpg",
+    title: "Classical Dance Performance", label: "Dance & Culture",
+    brief: "Stage, sound and lighting for a traditional classical dance piece during the MSSW 75th anniversary celebration.",
+  },
+  {
+    cat: "dance", tall: false, video: "/media/portfolio/live-percussion.mp4",
+    img: "/media/portfolio/live-percussion.jpg",
+    title: "Live Percussion On Stage", label: "Dance & Culture",
+    brief: "Mic'd traditional drums on an LED-backed stage — balanced live so every beat reached the back row.",
+  },
+  {
+    cat: "dance", tall: true, video: "/media/portfolio/dance-floor-party.mp4",
+    img: "/media/portfolio/dance-floor-party.jpg",
+    title: "Dance Floor Party Night", label: "Dance & Culture",
+    brief: "A packed dance floor under moving-head lighting, driven by a live DJ set from our own booth.",
+  },
+  {
+    cat: "dj", tall: true, featured: true, video: "/media/portfolio/dj-night-set.mp4",
+    img: "/media/portfolio/dj-night-set.jpg",
+    title: "Night DJ Set", label: "DJ & Sound",
+    brief: "Our DJ on the decks in a purple-lit venue — full controller, laptop rig and stage monitors.",
+  },
+  {
+    cat: "dj", tall: false, video: "/media/portfolio/dj-stage-lighting.mp4",
+    img: "/media/portfolio/dj-stage-lighting.jpg",
+    title: "DJ Booth & Stage Lighting", label: "DJ & Sound",
+    brief: "Booth-side view of a red-washed stage: truss, moving heads and a live DJ rig working together.",
+  },
+  {
+    cat: "dj", tall: false, video: "/media/portfolio/dj-led-wall.mp4",
+    img: "/media/portfolio/dj-led-wall.jpg",
+    title: "DJ Setup With LED Wall", label: "DJ & Sound",
+    brief: "A DJ setup facing a full LED wall — synced visuals, sound and stage lighting on one run sheet.",
+  },
+  {
+    cat: "dj", tall: false, video: "/media/portfolio/outdoor-dj-mixer.mp4",
+    img: "/media/portfolio/outdoor-dj-mixer.jpg",
+    title: "Outdoor Sound & Mixer Setup", label: "DJ & Sound",
+    brief: "Daylight open-air setup with a controller, analogue mixer and monitors covering a whole campus courtyard.",
+  },
+  {
+    cat: "dj", tall: false, video: "/media/portfolio/outdoor-dj-audience.mp4",
+    img: "/media/portfolio/outdoor-dj-audience.jpg",
+    title: "Campus Outdoor DJ", label: "DJ & Sound",
+    brief: "DJ booth on the edge of a live outdoor audience, keeping the whole programme flowing between acts.",
+  },
+  {
+    cat: "dj", tall: false, featured: true,
+    img: "/media/portfolio/crew-live-setup.jpg",
+    title: "Live Sound Crew At Work", label: "DJ & Sound",
+    brief: "The crew mid-show: keys, mixer and DJ laptop all patched into a single front-of-house position.",
+  },
+  {
+    cat: "dj", tall: false,
+    img: "/media/portfolio/dj-controller-venue.jpg",
+    title: "Controller, Close Up", label: "DJ & Sound",
+    brief: "A close look at the controller with the venue's stage lighting glowing behind it.",
+  },
+  {
+    cat: "dj", tall: false,
+    img: "/media/portfolio/dj-controller-bokeh.jpg",
+    title: "Decks & Stage Glow", label: "DJ & Sound",
+    brief: "Pad lights, jog wheels and a blurred stage — the view from the booth just before the doors open.",
+  },
+  {
+    cat: "corporate", tall: false, video: "/media/portfolio/stage-felicitation.mp4",
+    img: "/media/portfolio/stage-felicitation.jpg",
+    title: "Stage Felicitation", label: "Corporate",
+    brief: "A guest-of-honour felicitation on a floral-fronted stage, paced and mic'd from the sound desk.",
+  },
+  {
+    cat: "corporate", tall: false, video: "/media/portfolio/stage-floral-ceremony.mp4",
+    img: "/media/portfolio/stage-floral-ceremony.jpg",
+    title: "Floral Stage Ceremony", label: "Corporate",
+    brief: "An awards moment on a stage dressed in marigold and orange blooms, run to the minute.",
+  },
+);
+
 export const filters = [
   { key: "all", label: "All Work" },
   { key: "wedding", label: "Weddings" },
   { key: "corporate", label: "Corporate" },
   { key: "concert", label: "Concerts" },
+  { key: "dj", label: "DJ & Sound" },
+  { key: "dance", label: "Dance & Culture" },
   { key: "brand", label: "Brand Activation" },
 ];
 
