@@ -636,6 +636,7 @@ em{ font-style:normal; font-family: inherit; color: var(--accent-light); }
    Floating buttons
    ========================================================================== */
 .back-to-top{
+  cursor:pointer; color:inherit; padding:0;
   position:fixed; right:26px; bottom:26px; width:48px; height:48px; border-radius:50%;
   background: var(--surface-2); border:1px solid var(--border-light);
   display:flex; align-items:center; justify-content:center; z-index:500;
