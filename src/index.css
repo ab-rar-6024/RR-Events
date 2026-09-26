@@ -26,8 +26,8 @@
   --ease-out: cubic-bezier(0.22,1,0.36,1);
   --dur: 250ms;
   --container: 1280px;
-  --font-head: "Playfair Display", Georgia, serif;
-  --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-head: "Bricolage Grotesque", "Manrope", system-ui, sans-serif;
+  --font-body: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 /* ==========================================================================
@@ -93,7 +93,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 
 .section-head{ margin-bottom:60px; }
 
-em{ font-style:italic; font-family: var(--font-head); color: inherit; }
+em{ font-style:normal; font-family: inherit; color: var(--accent-light); }
 .accent{ color: var(--accent-light); font-style:normal; }
 
 /* ==========================================================================
@@ -237,12 +237,12 @@ em{ font-style:italic; font-family: var(--font-head); color: inherit; }
 .hero__content{ position:relative; z-index:1; max-width:900px; }
 .hero__title{
   font-family: var(--font-head); font-weight:500; color:#fff;
-  font-size: clamp(2.4rem, 5.6vw, 4.6rem); line-height:1.08; letter-spacing:-0.01em; margin-bottom:28px;
+  font-size: clamp(2.6rem, 6.4vw, 5.4rem); line-height:1.04; letter-spacing:-0.025em; font-weight:700; margin-bottom:38px;
 }
 .reveal-line{ display:block; overflow:hidden; }
 .reveal-line span{ display:block; }
 
-.hero__desc{ color: rgba(243,241,236,0.78); font-size:1.15rem; max-width:520px; margin-bottom:36px; font-family: var(--font-head); font-style:italic; line-height:1.5; }
+.hero__desc{ color: rgba(243,241,236,0.78); font-size:1.15rem; max-width:520px; margin-bottom:36px; font-family: var(--font-head); line-height:1.5; }
 .hero__actions{ display:flex; align-items:center; gap:36px; flex-wrap:wrap; }
 
 .scroll-cue{
@@ -324,7 +324,7 @@ em{ font-style:italic; font-family: var(--font-head); color: inherit; }
 .leadership__content > *{ margin-bottom:22px; }
 .leadership__content p{ color: var(--text-muted); }
 .leadership__quote{
-  font-family: var(--font-head); font-style:italic; font-size:1.35rem; color:#fff;
+  font-family: var(--font-head); font-size:1.35rem; color:#fff;
   line-height:1.45; border-left:2px solid var(--accent-light); padding-left:22px;
 }
 .leadership__name{ display:flex; flex-direction:column; gap:2px; }
@@ -440,7 +440,7 @@ em{ font-style:italic; font-family: var(--font-head); color: inherit; }
   padding:34px; transition: transform .4s var(--ease-out), border-color .4s var(--ease);
 }
 .testimonial-grid-card:hover{ transform: translateY(-6px); border-color: var(--accent-light); }
-.testimonial-grid-card p{ font-family: var(--font-head); font-style:italic; font-size:1.1rem; color:#fff; line-height:1.5; margin-bottom:22px; }
+.testimonial-grid-card p{ font-family: var(--font-head); font-size:1.1rem; color:#fff; line-height:1.5; margin-bottom:22px; }
 .testimonial-grid-card__author strong{ display:block; color:#fff; font-size:.95rem; }
 .testimonial-grid-card__author span{ color: var(--accent-light); font-size:.85rem; }
 
@@ -528,7 +528,7 @@ em{ font-style:italic; font-family: var(--font-head); color: inherit; }
 .testimonials{ padding:140px 0; background: var(--bg); }
 .testimonial-slider{ padding-bottom:10px; }
 .testimonial-card{ max-width:760px; }
-.testimonial-card p{ font-family: var(--font-head); font-size: clamp(1.4rem, 2.6vw, 2rem); font-style:italic; color:#fff; line-height:1.45; margin-bottom:32px; }
+.testimonial-card p{ font-family: var(--font-head); font-size: clamp(1.4rem, 2.6vw, 2rem); color:#fff; line-height:1.45; margin-bottom:32px; }
 .testimonial-card__author strong{ display:block; color:#fff; font-size:1rem; font-weight:600; }
 .testimonial-card__author span{ color: var(--text-faint); font-size:.88rem; }
 .swiper-pagination-bullet{ background: var(--text-faint); opacity:1; border-radius:0; width:20px; height:2px; }

@@ -54,14 +54,9 @@ export default function Hero() {
 
       <div className="container hero__content">
         <h1 className="hero__title">
-          <span className="reveal-line"><span>From high-energy concerts</span></span>
-          <span className="reveal-line"><span>to seamless corporate events —</span></span>
-          <span className="reveal-line"><span>we bring your <em>vision</em> to life.</span></span>
+          <span className="reveal-line"><span>We bring your</span></span>
+          <span className="reveal-line"><span><em>vision</em> to life.</span></span>
         </h1>
-        <p className="hero__desc hero-anim">
-          RR Events is a Chennai-rooted production house delivering top-tier concerts, weddings,
-          corporate shows and brand activations across India.
-        </p>
         <div className="hero__actions hero-anim">
           <Link ref={magneticRef} to="/contact" className="btn btn--accent">Start Planning <ArrowUpRight size={16} /></Link>
           <button type="button" className="btn btn--text" onClick={() => setShowreelOpen(true)}>
