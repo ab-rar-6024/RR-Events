@@ -12,7 +12,7 @@ export default function AutoVideo({ src, poster, className }) {
         if (entry.isIntersecting) el.play().catch(() => {});
         else el.pause();
       },
-      { threshold: 0.25 }
+      { threshold: 0.5 }
     );
     observer.observe(el);
     return () => observer.disconnect();
@@ -27,7 +27,7 @@ export default function AutoVideo({ src, poster, className }) {
       muted
       loop
       playsInline
-      preload="metadata"
+      preload="none"
     />
   );
 }

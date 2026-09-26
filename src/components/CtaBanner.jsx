@@ -11,7 +11,7 @@ export default function CtaBanner() {
   useEffect(() => {
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const img = imgRef.current;
-    if (!img || reducedMotion) return;
+    if (!img || reducedMotion || window.matchMedia("(max-width: 768px)").matches) return; // no scroll parallax on phones
 
     let raf = null;
     function onScroll() {

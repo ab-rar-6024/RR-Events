@@ -487,7 +487,7 @@ em{ font-style:normal; font-family: inherit; color: var(--accent-light); }
   background:#000; cursor:pointer; scroll-snap-align:start;
 }
 .reel video{ width:100%; height:100%; object-fit:cover; display:block; transition: transform .7s var(--ease-out); }
-.reel:hover video{ transform: scale(1.05); }
+@media (hover:hover){ .reel:hover video{ transform: scale(1.05); } }
 .reel::after{ content:""; position:absolute; inset:0; pointer-events:none; background: linear-gradient(0deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0) 40%); }
 .reel__play{
   position:absolute; top:14px; right:14px; z-index:2; width:32px; height:32px; border-radius:50%;
@@ -504,7 +504,7 @@ em{ font-style:normal; font-family: inherit; color: var(--accent-light); }
 .photo-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-top:8px; animation: media-in .6s var(--ease-out); }
 .photo-tile{ position:relative; aspect-ratio:16/9; overflow:hidden; background:#000; cursor:pointer; }
 .photo-tile img{ width:100%; height:100%; object-fit:cover; display:block; transition: transform .7s var(--ease-out); }
-.photo-tile:hover img{ transform: scale(1.06); }
+@media (hover:hover){ .photo-tile:hover img{ transform: scale(1.06); } }
 .photo-tile::after{ content:""; position:absolute; inset:0; pointer-events:none; background: linear-gradient(0deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0) 45%); opacity:0; transition: opacity .4s var(--ease); }
 .photo-tile figcaption{ opacity:0; transform: translateY(8px); transition: opacity .4s var(--ease), transform .4s var(--ease-out); }
 .photo-tile:hover::after, .photo-tile:hover figcaption{ opacity:1; transform:none; }
@@ -648,7 +648,7 @@ em{ font-style:normal; font-family: inherit; color: var(--accent-light); }
 .back-to-top:hover i, .back-to-top:hover svg{ transform: translateY(-2px); }
 
 .whatsapp-fab{
-  position:fixed; left:26px; bottom:26px; width:52px; height:52px; border-radius:50%;
+  position:fixed; right:24px; bottom:88px; width:52px; height:52px; border-radius:50%;
   background:#25D366; color:#fff; display:flex; align-items:center; justify-content:center;
   z-index:500; transition: transform .35s var(--ease-spring), box-shadow .35s var(--ease);
   box-shadow: 0 0 0 0 rgba(37,211,102,0.5);
@@ -757,7 +757,7 @@ em{ font-style:normal; font-family: inherit; color: var(--accent-light); }
   .footer__top{ grid-template-columns:1fr; gap:36px; }
   .contact__form{ padding:26px; }
   .cta-banner{ padding:100px 0; }
-  .whatsapp-fab{ width:48px; height:48px; left:18px; bottom:18px; }
+  .whatsapp-fab{ width:48px; height:48px; right:15px; bottom:72px; }
   .back-to-top{ width:42px; height:42px; right:18px; bottom:18px; }
   .page-hero{ padding:170px 0 80px; }
   .values__grid{ grid-template-columns:1fr; }
@@ -906,4 +906,23 @@ em{ font-style:normal; font-family: inherit; color: var(--accent-light); }
 }
 @media (prefers-reduced-motion: reduce){
   .hero__line--accent .hero__word-inner{ animation:none; }
+}
+
+/* portfolio mobile performance */
+.reel{ contain:layout paint; }
+@media (max-width:768px){
+  .reels, .photo-grid{ animation:none; }
+  .reel video{ transition:none; }
+  .photo-tile img{ transition:none; }
+  .reels{ -webkit-overflow-scrolling:touch; overscroll-behavior-x:contain; }
+}
+
+/* phones: drop paint-heavy effects */
+@media (max-width:768px){
+  .about__media img, .page-hero img, .cta-banner img, .intro__strip img, .lightbox img{ filter:none; }
+  .reveal-up{ transform:translateY(24px); transition: opacity .6s var(--ease-out), transform .6s var(--ease-out); }
+  .reveal-up.is-visible{ transform:none; }
+  .reveal-left, .reveal-right{ transform:translateY(24px); }
+  .reveal-left.is-visible, .reveal-right.is-visible{ transform:none; }
+  .contact__map{ filter:none; }
 }

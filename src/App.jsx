@@ -22,6 +22,20 @@ const SECTION_IDS = ["home"];
 function useLenis() {
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    // Touch devices already scroll natively at full frame rate; driving them through
+    // Lenis + a permanent GSAP ticker only adds work per frame, so skip it there.
+    if (window.matchMedia("(pointer: coarse)").matches) {
+      function onTouchAnchor(e) {
+        const link = e.target.closest('a[href^="#"]');
+        const id = link && link.getAttribute("href");
+        const target = id && id.length > 1 && document.querySelector(id);
+        if (!target) return;
+        e.preventDefault();
+        target.scrollIntoView({ behavior: "smooth" });
+      }
+      document.addEventListener("click", onTouchAnchor);
+      return () => document.removeEventListener("click", onTouchAnchor);
+    }
     const lenis = new Lenis({ duration: 1.1, smoothWheel: true, wheelMultiplier: 1 });
     window.__lenis = lenis; // shared handle so route-change hash scrolling can reuse it
     function raf(time) { lenis.raf(time * 1000); }

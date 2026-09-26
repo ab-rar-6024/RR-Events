@@ -25,7 +25,13 @@ export default function Hero() {
   // keep decoding while the user scrolls the rest of the page.
   useEffect(() => {
     const video = videoRef.current;
-    if (!video || !("IntersectionObserver" in window)) return;
+    if (!video) return;
+    // Phones get a lighter portrait clip.
+    if (window.matchMedia("(max-width: 768px)").matches) {
+      video.src = "/media/hero-bg-mobile.mp4";
+      video.play().catch(() => {});
+    }
+    if (!("IntersectionObserver" in window)) return;
     const io = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) video.play().catch(() => {});
       else video.pause();
@@ -71,7 +77,7 @@ export default function Hero() {
         <video
           ref={videoRef}
           poster="/media/hero-poster.jpg"
-          autoPlay muted loop playsInline preload="auto"
+          autoPlay muted loop playsInline preload="metadata"
           aria-label="Aerial footage from a live RR Events production"
         >
           <source src="/media/hero-bg.mp4" type="video/mp4" />
