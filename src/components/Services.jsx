@@ -1,16 +1,30 @@
+import { Heart, Briefcase, Music, Sparkles, LayoutGrid, Palette } from "lucide-react";
 import { useReveal } from "../hooks";
 import { services } from "../data/content";
 
-function ServiceRow({ service }) {
+const visuals = {
+  "01": { icon: Heart, img: "/media/portfolio/stage-floral-ceremony.jpg" },
+  "02": { icon: Briefcase, img: "/media/panel-discussion.jpg" },
+  "03": { icon: Music, img: "/media/live-performance.jpg" },
+  "04": { icon: Sparkles, img: "/media/crowd-audience.jpg" },
+  "05": { icon: LayoutGrid, img: "/media/aerial-event-setup.jpg" },
+  "06": { icon: Palette, img: "/media/behind-the-scenes.jpg" },
+};
+
+function ServiceCard({ service }) {
   const [ref, visible] = useReveal();
+  const { icon: Icon, img } = visuals[service.num];
   return (
-    <div ref={ref} className={`service-row reveal-up${visible ? " is-visible" : ""}`}>
-      <span className="service-row__num">{service.num}</span>
-      <div className="service-row__body">
-        <h3 className="service-row__title">{service.title}</h3>
-        <p className="service-row__desc">{service.desc}</p>
+    <article ref={ref} className={`service-card reveal-up${visible ? " is-visible" : ""}`}>
+      <img className="service-card__bg" src={img} alt="" loading="lazy" />
+      <div className="service-card__shade"></div>
+      <span className="service-card__num">{service.num}</span>
+      <div className="service-card__content">
+        <span className="service-card__icon"><Icon size={24} /></span>
+        <h3>{service.title}</h3>
+        <p>{service.desc}</p>
       </div>
-    </div>
+    </article>
   );
 }
 
@@ -26,9 +40,9 @@ export default function Services() {
           </h2>
         </div>
 
-        <div className="services__list">
+        <div className="services__cards">
           {services.map((service) => (
-            <ServiceRow key={service.num} service={service} />
+            <ServiceCard key={service.num} service={service} />
           ))}
         </div>
       </div>

@@ -7,6 +7,7 @@ import Portfolio from "../components/Portfolio";
 import Vip from "../components/Vip";
 import CtaBanner from "../components/CtaBanner";
 import Testimonials from "../components/Testimonials";
+import Clients from "../components/Clients";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
       <Portfolio />
       <Vip />
       <CtaBanner />
+      <Clients />
       <Testimonials />
     </>
   );

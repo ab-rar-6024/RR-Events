@@ -19,6 +19,20 @@ function SplitLine({ text, accent = false }) {
 
 export default function Hero() {
   const rootRef = useRef(null);
+  const videoRef = useRef(null);
+
+  // Pause the background video once the hero is off-screen so it doesn't
+  // keep decoding while the user scrolls the rest of the page.
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video || !("IntersectionObserver" in window)) return;
+    const io = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) video.play().catch(() => {});
+      else video.pause();
+    }, { threshold: 0.05 });
+    io.observe(video);
+    return () => io.disconnect();
+  }, []);
   const magneticRef = useMagnetic(0.25);
 
   useEffect(() => {
@@ -55,6 +69,7 @@ export default function Hero() {
     <section className="hero" id="home" ref={rootRef}>
       <div className="hero__bg">
         <video
+          ref={videoRef}
           poster="/media/hero-poster.jpg"
           autoPlay muted loop playsInline preload="auto"
           aria-label="Aerial footage from a live RR Events production"

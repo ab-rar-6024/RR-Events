@@ -58,6 +58,37 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* LEADERSHIP */}
+      <section className="leadership">
+        <div className="container leadership__grid">
+          <div ref={leaderMediaRef} className={`leadership__media reveal-up${leaderMediaVisible ? " is-visible" : ""}`}>
+            <img src="/media/ceo-siva.jpg" alt="Siva, Founder, CEO and DJ of RR Events" loading="lazy" />
+          </div>
+          <div ref={leaderContentRef} className="leadership__content">
+            <span className={`eyebrow reveal-up${leaderContentVisible ? " is-visible" : ""}`}>Leadership</span>
+            <h2 className={`section-title reveal-up${leaderContentVisible ? " is-visible" : ""}`}>
+              Meet The Founder
+            </h2>
+            <p className={`leadership__quote reveal-up${leaderContentVisible ? " is-visible" : ""}`}>
+              "An event doesn't get a second take. My job is to make sure it never needs one."
+            </p>
+            <p className={`reveal-up${leaderContentVisible ? " is-visible" : ""}`}>
+              Siva founded RR Events on a simple rule: show up earlier than anyone expects, and
+              leave later than anyone asks. A working DJ as well as a producer, Siva runs sound
+              checks in person, walks every venue before a single chair is placed, and treats each
+              production like the very first show — as if everything is riding on it.
+            </p>
+            <div className={`leadership__name reveal-up${leaderContentVisible ? " is-visible" : ""}`}>
+              <strong>Siva</strong>
+              <span>Founder, CEO &amp; DJ, RR Events</span>
+            </div>
+            <Link to="/contact" className={`btn btn--cream reveal-up${leaderContentVisible ? " is-visible" : ""}`}>
+              Get In Touch <ArrowUpRight size={16} />
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* OUR STORY */}
       <section className="about">
         <div className="container about__grid">
@@ -92,37 +123,6 @@ export default function AboutPage() {
               <Stat value={2} label="Years Experience" />
               <Stat value={40} suffix="+" label="Crew Members" />
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* LEADERSHIP */}
-      <section className="leadership">
-        <div className="container leadership__grid">
-          <div ref={leaderMediaRef} className={`leadership__media reveal-up${leaderMediaVisible ? " is-visible" : ""}`}>
-            <img src="/media/ceo-siva.jpg" alt="Siva, Founder and CEO of RR Events" loading="lazy" />
-          </div>
-          <div ref={leaderContentRef} className="leadership__content">
-            <span className={`eyebrow reveal-up${leaderContentVisible ? " is-visible" : ""}`}>Leadership</span>
-            <h2 className={`section-title reveal-up${leaderContentVisible ? " is-visible" : ""}`}>
-              Meet The Founder
-            </h2>
-            <p className={`leadership__quote reveal-up${leaderContentVisible ? " is-visible" : ""}`}>
-              "An event doesn't get a second take. My job is to make sure it never needs one."
-            </p>
-            <p className={`reveal-up${leaderContentVisible ? " is-visible" : ""}`}>
-              Siva founded RR Events on a simple rule: show up earlier than anyone expects, and
-              leave later than anyone asks. From running sound checks himself to walking every
-              venue before a single chair is placed, he still treats each production the way he
-              treated his very first show — like everything is riding on it.
-            </p>
-            <div className={`leadership__name reveal-up${leaderContentVisible ? " is-visible" : ""}`}>
-              <strong>Siva</strong>
-              <span>Founder &amp; CEO, RR Events</span>
-            </div>
-            <Link to="/contact" className={`btn btn--cream reveal-up${leaderContentVisible ? " is-visible" : ""}`}>
-              Get In Touch <ArrowUpRight size={16} />
-            </Link>
           </div>
         </div>
       </section>

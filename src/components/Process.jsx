@@ -1,11 +1,18 @@
+import { Search, PenTool, CalendarCheck, Mic, Award } from "lucide-react";
 import { useReveal } from "../hooks";
 import { processSteps } from "../data/content";
 
+const icons = { "01": Search, "02": PenTool, "03": CalendarCheck, "04": Mic, "05": Award };
+
 function Step({ step }) {
   const [ref, visible] = useReveal();
+  const Icon = icons[step.number];
   return (
     <div ref={ref} className={`process__step reveal-up${visible ? " is-visible" : ""}`}>
-      <span className="process__number">{step.number}</span>
+      <div className="process__node">
+        <span className="process__icon"><Icon size={26} /></span>
+        <span className="process__badge">{step.number}</span>
+      </div>
       <h3>{step.title}</h3>
       <p>{step.desc}</p>
     </div>

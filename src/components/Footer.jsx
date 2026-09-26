@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ArrowRight } from "lucide-react";
-import { InstagramIcon, YoutubeIcon, LinkedinIcon } from "./SocialIcons";
+import { InstagramIcon } from "./SocialIcons";
+import { instagramUrl } from "../data/content";
 import NavLink from "./NavLink";
 
 export default function Footer() {
@@ -24,9 +25,7 @@ export default function Footer() {
           </NavLink>
           <p>Events &amp; entertainment production studio crafting bold, unforgettable experiences across India.</p>
           <div className="contact__social">
-            <a href="#" aria-label="Instagram"><InstagramIcon size={16} /></a>
-            <a href="#" aria-label="YouTube"><YoutubeIcon size={16} /></a>
-            <a href="#" aria-label="LinkedIn"><LinkedinIcon size={16} /></a>
+            <a href={instagramUrl} target="_blank" rel="noopener noreferrer" aria-label="Instagram"><InstagramIcon size={16} /></a>
           </div>
         </div>
 
@@ -72,8 +71,8 @@ export default function Footer() {
       <div className="container footer__bottom">
         <p>&copy; {year} RR Events. All rights reserved.</p>
         <div className="footer__legal">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
+          <NavLink to="/privacy">Privacy Policy</NavLink>
+          <NavLink to="/terms">Terms of Service</NavLink>
         </div>
       </div>
     </footer>

@@ -12,6 +12,9 @@ import ContactPage from "./pages/ContactPage";
 import ServicesPage from "./pages/ServicesPage";
 import PortfolioPage from "./pages/PortfolioPage";
 import TestimonialsPage from "./pages/TestimonialsPage";
+import LegalPage from "./pages/LegalPage";
+import NotFoundPage from "./pages/NotFoundPage";
+import { privacyPolicy, termsOfService } from "./data/legal";
 import { useScrollState, useActiveSection } from "./hooks";
 
 const SECTION_IDS = ["home"];
@@ -73,13 +76,13 @@ function useScrollRestoration() {
 export default function App() {
   useLenis();
   useScrollRestoration();
-  const { scrolled, showBackToTop, progress } = useScrollState();
+  const { scrolled, showBackToTop, progressRef } = useScrollState();
   const activeSection = useActiveSection(SECTION_IDS);
 
   return (
     <>
       <Preloader />
-      <div className="scroll-progress" style={{ width: `${progress}%` }}></div>
+      <div className="scroll-progress" ref={progressRef}></div>
 
       <Header scrolled={scrolled} activeSection={activeSection} />
 
@@ -91,6 +94,9 @@ export default function App() {
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/portfolio" element={<PortfolioPage />} />
           <Route path="/testimonials" element={<TestimonialsPage />} />
+          <Route path="/privacy" element={<LegalPage doc={privacyPolicy} />} />
+          <Route path="/terms" element={<LegalPage doc={termsOfService} />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
 

@@ -245,3 +245,14 @@ export const navLinks = [
   { href: "/portfolio", label: "Portfolio", route: true },
   { href: "/testimonials", label: "Testimonials", route: true },
 ];
+
+// Add a file to public/media/clients/ and set `logo` to show a logo instead of the name.
+export const clients = [
+  { name: "Indian Institute of Technology Madras", short: "IIT Madras", logo: "/media/clients/iitm.png" },
+  { name: "SRM Institute of Science and Technology", short: "SRM", logo: "/media/clients/srm.svg", dark: true },
+  { name: "Madras School of Social Work", short: "Madras School of Social Work", logo: "/media/clients/mssw.jpg" },
+  { name: "Sri Ramachandra Institute of Higher Education and Research", short: "Sri Ramachandra", logo: "/media/clients/sriher.png" },
+  { name: "Dwaraka Doss Goverdhan Doss Vaishnav College", short: "DG Vaishnav College", logo: "/media/clients/dgvc.jpg" },
+];
+
+export const instagramUrl = "https://www.instagram.com/_rr_events___?stkn=eGV5N2RpZnZjcmEx&utm_source=qr";

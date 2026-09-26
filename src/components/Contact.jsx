@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { MapPin, Phone, Mail, Clock, Send, CheckCircle2 } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Send, Construction, MessageCircle } from "lucide-react";
 import { useReveal } from "../hooks";
-import { InstagramIcon, YoutubeIcon, LinkedinIcon } from "./SocialIcons";
+import { InstagramIcon } from "./SocialIcons";
+import { instagramUrl } from "../data/content";
 
 const initialForm = { name: "", phone: "", email: "", eventType: "", date: "", guests: "", message: "" };
 
@@ -36,11 +37,23 @@ export default function Contact() {
       setSubmitted(false);
       return;
     }
-    // No backend wired up — simulate a successful submission.
+    // Online enquiries aren't live yet: keep the details and point people to phone / WhatsApp.
     setSubmitted(true);
-    setForm(initialForm);
-    setTimeout(() => setSubmitted(false), 6000);
   }
+
+  const waText = encodeURIComponent(
+    `Hi RR Events, I'd like to enquire about an event.
+` +
+    `Name: ${form.name}
+Phone: ${form.phone}
+Email: ${form.email}
+` +
+    `Event: ${form.eventType}${form.date ? `
+Date: ${form.date}` : ""}${form.guests ? `
+Guests: ${form.guests}` : ""}
+` +
+    `Details: ${form.message}`
+  );
 
   return (
     <section className="contact" id="contact">
@@ -72,9 +85,7 @@ export default function Contact() {
           </ul>
 
           <div className="contact__social">
-            <a href="#" aria-label="Instagram"><InstagramIcon size={16} /></a>
-            <a href="#" aria-label="YouTube"><YoutubeIcon size={16} /></a>
-            <a href="#" aria-label="LinkedIn"><LinkedinIcon size={16} /></a>
+            <a href={instagramUrl} target="_blank" rel="noopener noreferrer" aria-label="Instagram"><InstagramIcon size={16} /></a>
           </div>
         </div>
 
@@ -135,9 +146,21 @@ export default function Contact() {
             <Send size={16} />
           </button>
 
-          <p className={`form-success${submitted ? " is-visible" : ""}`} role="status" aria-live="polite">
-            <CheckCircle2 size={18} /> Thank you! Your enquiry has been received — our team will reach out shortly.
-          </p>
+          {submitted && (
+            <div className="form-progress" role="status" aria-live="polite">
+              <Construction size={22} />
+              <div>
+                <strong>Online enquiries are still in progress</strong>
+                <p>We haven't received this form yet. Please reach us directly and we'll respond right away.</p>
+                <div className="form-progress__actions">
+                  <a className="btn btn--accent" href="tel:+916383978275"><Phone size={16} /> Call +91 63839 78275</a>
+                  <a className="btn btn--outline" href={`https://wa.me/916383978275?text=${waText}`} target="_blank" rel="noreferrer">
+                    <MessageCircle size={16} /> Send on WhatsApp
+                  </a>
+                </div>
+              </div>
+            </div>
+          )}
         </form>
       </div>
 

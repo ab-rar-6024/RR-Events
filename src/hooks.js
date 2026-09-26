@@ -52,23 +52,35 @@ export function useCounter(target, { suffix = "", duration = 1600 } = {}) {
 export function useScrollState() {
   const [scrolled, setScrolled] = useState(false);
   const [showBackToTop, setShowBackToTop] = useState(false);
-  const [progress, setProgress] = useState(0);
+  // The progress bar is driven straight from the scroll handler (no React state),
+  // so scrolling never re-renders the whole app.
+  const progressRef = useRef(null);
 
   useEffect(() => {
-    function onScroll() {
+    let ticking = false;
+    function update() {
+      ticking = false;
       const y = window.scrollY;
       setScrolled(y > 40);
       setShowBackToTop(y > 500);
       const h = document.documentElement;
       const max = h.scrollHeight - h.clientHeight;
-      setProgress(max > 0 ? (h.scrollTop / max) * 100 : 0);
+      if (progressRef.current) {
+        progressRef.current.style.transform = `scaleX(${max > 0 ? Math.min(1, h.scrollTop / max) : 0})`;
+      }
+    }
+    function onScroll() {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
     }
     window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
+    update();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  return { scrolled, showBackToTop, progress };
+  return { scrolled, showBackToTop, progressRef };
 }
 
 /** Subtle magnetic pull toward the cursor for buttons/floating actions. */
