@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { MapPin, Phone, Mail, Clock, Send, Construction, MessageCircle } from "lucide-react";
 import { useReveal } from "../hooks";
-import { InstagramIcon } from "./SocialIcons";
-import { instagramUrl } from "../data/content";
+import { InstagramIcon, YoutubeIcon } from "./SocialIcons";
+import { instagramUrl, youtubeUrl } from "../data/content";
 
 const initialForm = { name: "", phone: "", email: "", eventType: "", date: "", guests: "", message: "" };
 
@@ -86,6 +86,7 @@ Guests: ${form.guests}` : ""}
 
           <div className="contact__social">
             <a href={instagramUrl} target="_blank" rel="noopener noreferrer" aria-label="Instagram"><InstagramIcon size={16} /></a>
+            <a href={youtubeUrl} target="_blank" rel="noopener noreferrer" aria-label="YouTube"><YoutubeIcon size={16} /></a>
           </div>
         </div>
 

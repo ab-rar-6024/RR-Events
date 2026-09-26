@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
-import { navLinks, instagramUrl } from "../data/content";
-import { InstagramIcon } from "./SocialIcons";
+import { navLinks, instagramUrl, youtubeUrl } from "../data/content";
+import { InstagramIcon, YoutubeIcon } from "./SocialIcons";
 import NavLink from "./NavLink";
 
 export default function Header({ scrolled, activeSection }) {
@@ -70,6 +70,7 @@ export default function Header({ scrolled, activeSection }) {
         <NavLink to="/contact" className="btn btn--accent btn--block" onClick={closeMenu}>Contact Us</NavLink>
         <div className="mobile-menu__social">
           <a href={instagramUrl} target="_blank" rel="noopener noreferrer" aria-label="Instagram"><InstagramIcon size={18} /></a>
+            <a href={youtubeUrl} target="_blank" rel="noopener noreferrer" aria-label="YouTube"><YoutubeIcon size={18} /></a>
         </div>
       </div>
     </>

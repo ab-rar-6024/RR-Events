@@ -256,3 +256,4 @@ export const clients = [
 ];
 
 export const instagramUrl = "https://www.instagram.com/_rr_events___?stkn=eGV5N2RpZnZjcmEx&utm_source=qr";
+export const youtubeUrl = "https://youtube.com/@rrevent26?si=otxtbuvsTtbfH3nH";

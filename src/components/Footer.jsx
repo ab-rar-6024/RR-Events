@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ArrowRight } from "lucide-react";
-import { InstagramIcon } from "./SocialIcons";
-import { instagramUrl } from "../data/content";
+import { InstagramIcon, YoutubeIcon } from "./SocialIcons";
+import { instagramUrl, youtubeUrl } from "../data/content";
 import NavLink from "./NavLink";
 
 export default function Footer() {
@@ -26,6 +26,7 @@ export default function Footer() {
           <p>Events &amp; entertainment production studio crafting bold, unforgettable experiences across India.</p>
           <div className="contact__social">
             <a href={instagramUrl} target="_blank" rel="noopener noreferrer" aria-label="Instagram"><InstagramIcon size={16} /></a>
+            <a href={youtubeUrl} target="_blank" rel="noopener noreferrer" aria-label="YouTube"><YoutubeIcon size={16} /></a>
           </div>
         </div>
 

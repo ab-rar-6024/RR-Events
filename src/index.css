@@ -927,3 +927,12 @@ em{ font-style:normal; font-family: inherit; color: var(--accent-light); }
   .reveal-left.is-visible, .reveal-right.is-visible{ transform:none; }
   .contact__map{ filter:none; }
 }
+
+.leadership--alt{ background:var(--bg); padding-top:0; }
+.leadership--alt .leadership__grid{ grid-template-columns:1fr 0.75fr; }
+.leadership--alt .leadership__media{ order:2; }
+.leadership--alt .leadership__media img{ object-position:50% 18%; }
+@media (max-width:860px){
+  .leadership--alt .leadership__grid{ grid-template-columns:1fr; }
+  .leadership--alt .leadership__media{ order:0; }
+}
