@@ -632,6 +632,12 @@ em{ font-style:normal; font-family: inherit; color: var(--accent-light); }
 .footer__legal{ display:flex; gap:24px; }
 .footer__legal a:hover{ color: var(--accent-light); }
 
+.footer__credit{
+  padding:14px 0 28px; text-align:center; color: var(--text-faint); font-size:11px;
+}
+.footer__credit a{ color: var(--text-faint); text-decoration:underline; text-underline-offset:2px; }
+.footer__credit a:hover{ color: var(--accent-light); }
+
 /* ==========================================================================
    Floating buttons
    ========================================================================== */

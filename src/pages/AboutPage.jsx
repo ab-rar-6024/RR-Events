@@ -95,7 +95,7 @@ export default function AboutPage() {
       <section className="leadership leadership--alt">
         <div className="container leadership__grid">
           <div ref={pmMediaRef} className={`leadership__media reveal-up${pmMediaVisible ? " is-visible" : ""}`}>
-            <img src="/media/program-manager.jpg" alt="Program Manager at RR Events" loading="lazy" />
+            <img src="/media/program-manager.jpg" alt="Siril Johnson, Program Manager at RR Events" loading="lazy" />
           </div>
           <div ref={pmContentRef} className="leadership__content">
             <span className={`eyebrow reveal-up${pmContentVisible ? " is-visible" : ""}`}>Our Team</span>
@@ -107,8 +107,8 @@ export default function AboutPage() {
               artists and run sheets so each event moves from plan to stage without a hitch.
             </p>
             <div className={`leadership__name reveal-up${pmContentVisible ? " is-visible" : ""}`}>
-              <strong>Program Manager</strong>
-              <span>RR Events</span>
+              <strong>Siril Johnson</strong>
+              <span>Program Manager, RR Events</span>
             </div>
           </div>
         </div>

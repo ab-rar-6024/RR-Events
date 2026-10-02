@@ -76,6 +76,16 @@ export default function Footer() {
           <NavLink to="/terms">Terms of Service</NavLink>
         </div>
       </div>
+
+      <div className="container footer__credit">
+        <p>
+          Website by{" "}
+          <a href="https://mohamed-abrar-portfolio.vercel.app/" target="_blank" rel="noopener noreferrer">
+            AIKONIK
+          </a>
+          {" "}&middot; <a href="tel:+919042272801">+91 90422 72801</a>
+        </p>
+      </div>
     </footer>
   );
 }
