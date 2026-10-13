@@ -1,4 +1,5 @@
-import { useReveal, useCounter } from "../hooks";
+import { useReveal, useCounter, useSeo } from "../hooks";
+import { pages } from "../seo";
 import { testimonials } from "../data/content";
 import CtaBanner from "../components/CtaBanner";
 
@@ -26,6 +27,7 @@ function TestimonialGridCard({ t }) {
 }
 
 export default function TestimonialsPage() {
+  useSeo(pages.testimonials);
   const [headRef, headVisible] = useReveal();
 
   return (

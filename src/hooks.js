@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { SITE_URL, OG_IMAGE } from "./seo";
 
 /** Adds "is-visible" once the element scrolls into view (respects prefers-reduced-motion). */
 export function useReveal() {
@@ -136,4 +137,31 @@ export function useActiveSection(ids) {
   }, [ids]);
 
   return active;
+}
+
+/** Sets page title, description, canonical and social tags on every route change. */
+export function useSeo(page) {
+  useEffect(() => {
+    const url = SITE_URL + page.path;
+    document.title = page.title;
+    const set = (sel, attrs) => {
+      let el = document.head.querySelector(sel);
+      if (!el) {
+        el = document.createElement(sel.startsWith("link") ? "link" : "meta");
+        document.head.appendChild(el);
+      }
+      Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, v));
+    };
+    set('meta[name="description"]', { name: "description", content: page.description });
+    set('meta[name="keywords"]', { name: "keywords", content: page.keywords });
+    set('meta[name="robots"]', { name: "robots", content: page.noindex ? "noindex, nofollow" : "index, follow" });
+    set('link[rel="canonical"]', { rel: "canonical", href: url });
+    set('meta[property="og:title"]', { property: "og:title", content: page.title });
+    set('meta[property="og:description"]', { property: "og:description", content: page.description });
+    set('meta[property="og:url"]', { property: "og:url", content: url });
+    set('meta[property="og:image"]', { property: "og:image", content: OG_IMAGE });
+    set('meta[name="twitter:title"]', { name: "twitter:title", content: page.title });
+    set('meta[name="twitter:description"]', { name: "twitter:description", content: page.description });
+    set('meta[name="twitter:image"]', { name: "twitter:image", content: OG_IMAGE });
+  }, [page]);
 }

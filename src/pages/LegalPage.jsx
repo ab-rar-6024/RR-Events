@@ -1,8 +1,10 @@
-import { useReveal } from "../hooks";
+import { useReveal, useSeo } from "../hooks";
 import { legalUpdated } from "../data/legal";
+import { pages } from "../seo";
 
 export default function LegalPage({ doc }) {
   const [headRef, headVisible] = useReveal();
+  useSeo(doc.title === "Privacy Policy" ? pages.privacy : pages.terms);
 
   return (
     <>

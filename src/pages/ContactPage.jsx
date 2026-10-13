@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Phone, Mail, MessageCircle, ChevronDown, ClipboardList, PenTool, PartyPopper } from "lucide-react";
-import { useReveal } from "../hooks";
+import { useReveal, useSeo } from "../hooks";
+import { pages } from "../seo";
 import Contact from "../components/Contact";
 
 const quick = [
@@ -61,6 +62,7 @@ function NextStep({ step, i }) {
 }
 
 export default function ContactPage() {
+  useSeo(pages.contact);
   const [headRef, headVisible] = useReveal();
   const [faqRef, faqVisible] = useReveal();
 

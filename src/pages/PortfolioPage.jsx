@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { useReveal, useCounter } from "../hooks";
+import { useReveal, useCounter, useSeo } from "../hooks";
+import { pages } from "../seo";
 import { portfolioItems } from "../data/content";
 import Lightbox from "../components/Lightbox";
 import CtaBanner from "../components/CtaBanner";
@@ -26,6 +27,7 @@ const groupOrder = [
 ];
 
 export default function PortfolioPage() {
+  useSeo(pages.portfolio);
   const [headRef, headVisible] = useReveal();
   const [lightboxIndex, setLightboxIndex] = useState(null);
   const entries = portfolioItems.map((item, index) => ({ item, index }));

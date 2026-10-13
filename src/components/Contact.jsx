@@ -165,14 +165,23 @@ Guests: ${form.guests}` : ""}
         </form>
       </div>
 
-      <div ref={mapRef} className={`contact__map reveal-up${mapVisible ? " is-visible" : ""}`}>
+      <a
+        ref={mapRef}
+        href="https://www.google.com/maps/search/?api=1&query=No.+582%2C+P+H+Road%2C+Aminjikarai%2C+Chennai"
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`contact__map reveal-up${mapVisible ? " is-visible" : ""}`}
+        aria-label="Open RR Events' head office location in Google Maps"
+      >
         <iframe
           title="RR Events head office location"
           src="https://www.google.com/maps?q=582%20P%20H%20Road%2C%20Aminjikarai%2C%20Chennai&output=embed"
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
+          tabIndex={-1}
         ></iframe>
-      </div>
+        <span className="contact__map-badge"><MapPin size={14} /> Open in Google Maps</span>
+      </a>
     </section>
   );
 }

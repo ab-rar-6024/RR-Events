@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowUpRight, Check } from "lucide-react";
-import { useReveal } from "../hooks";
+import { useReveal, useSeo } from "../hooks";
+import { pages } from "../seo";
 import { services } from "../data/content";
 import CtaBanner from "../components/CtaBanner";
 
@@ -21,6 +22,7 @@ function ServiceDetailCard({ service }) {
 }
 
 export default function ServicesPage() {
+  useSeo(pages.services);
   const [headRef, headVisible] = useReveal();
 
   return (

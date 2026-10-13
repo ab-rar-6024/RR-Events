@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Sparkles, Target, ShieldCheck, Heart, ArrowUpRight } from "lucide-react";
-import { useReveal, useCounter } from "../hooks";
+import { useReveal, useCounter, useSeo } from "../hooks";
+import { pages } from "../seo";
 import CtaBanner from "../components/CtaBanner";
 
 function Stat({ value, suffix = "", label }) {
@@ -33,14 +34,13 @@ function ValueCard({ value }) {
 }
 
 export default function AboutPage() {
+  useSeo(pages.about);
   const [headRef, headVisible] = useReveal();
   const [storyMediaRef, storyMediaVisible] = useReveal();
   const [storyContentRef, storyContentVisible] = useReveal();
   const [leaderMediaRef, leaderMediaVisible] = useReveal();
   const [leaderContentRef, leaderContentVisible] = useReveal();
   const [valuesHeadRef, valuesHeadVisible] = useReveal();
-  const [pmMediaRef, pmMediaVisible] = useReveal();
-  const [pmContentRef, pmContentVisible] = useReveal();
 
   return (
     <>
@@ -87,29 +87,6 @@ export default function AboutPage() {
             <Link to="/contact" className={`btn btn--cream reveal-up${leaderContentVisible ? " is-visible" : ""}`}>
               Get In Touch <ArrowUpRight size={16} />
             </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* PROGRAM MANAGER */}
-      <section className="leadership leadership--alt">
-        <div className="container leadership__grid">
-          <div ref={pmMediaRef} className={`leadership__media reveal-up${pmMediaVisible ? " is-visible" : ""}`}>
-            <img src="/media/program-manager.jpg" alt="Siril Johnson, Program Manager at RR Events" loading="lazy" />
-          </div>
-          <div ref={pmContentRef} className="leadership__content">
-            <span className={`eyebrow reveal-up${pmContentVisible ? " is-visible" : ""}`}>Our Team</span>
-            <h2 className={`section-title reveal-up${pmContentVisible ? " is-visible" : ""}`}>
-              Program Manager
-            </h2>
-            <p className={`reveal-up${pmContentVisible ? " is-visible" : ""}`}>
-              The person who keeps every production on schedule — coordinating crew, vendors,
-              artists and run sheets so each event moves from plan to stage without a hitch.
-            </p>
-            <div className={`leadership__name reveal-up${pmContentVisible ? " is-visible" : ""}`}>
-              <strong>Siril Johnson</strong>
-              <span>Program Manager, RR Events</span>
-            </div>
           </div>
         </div>
       </section>

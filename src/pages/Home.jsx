@@ -8,8 +8,11 @@ import Vip from "../components/Vip";
 import CtaBanner from "../components/CtaBanner";
 import Testimonials from "../components/Testimonials";
 import Clients from "../components/Clients";
+import { useSeo } from "../hooks";
+import { pages } from "../seo";
 
 export default function Home() {
+  useSeo(pages.home);
   return (
     <>
       <Hero />

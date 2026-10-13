@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import { ArrowUpRight, Home } from "lucide-react";
+import { useSeo } from "../hooks";
+import { pages } from "../seo";
 
 export default function NotFoundPage() {
+  useSeo(pages.notFound);
   return (
     <section className="notfound">
       <div className="container notfound__inner">
