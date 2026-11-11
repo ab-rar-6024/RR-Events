@@ -188,6 +188,36 @@ portfolioItems.push(
     title: "Floral Stage Ceremony", label: "Corporate",
     brief: "An awards moment on a stage dressed in marigold and orange blooms, run to the minute.",
   },
+  {
+    cat: "corporate", tall: true, video: "/media/portfolio/setup-led-wall.mp4",
+    img: "/media/portfolio/setup-led-wall.jpg",
+    title: "LED Wall Rigging", label: "Corporate",
+    brief: "Our crew rigging a full LED wall frame on site, hours before doors opened at the MSSW anniversary.",
+  },
+  {
+    cat: "corporate", tall: true, video: "/media/portfolio/setup-pillar-decor.mp4",
+    img: "/media/portfolio/setup-pillar-decor.jpg",
+    title: "Pillar Decor Wrap", label: "Corporate",
+    brief: "Hand-wrapping venue pillars in blue and silver ribbon — decor detail that carries the theme down to the corridors.",
+  },
+  {
+    cat: "corporate", tall: true, video: "/media/portfolio/setup-floral-prep.mp4",
+    img: "/media/portfolio/setup-floral-prep.jpg",
+    title: "Floral Prep Table", label: "Corporate",
+    brief: "Fresh chrysanthemum and statice arrangements coming together on the floor before they dress the stage.",
+  },
+  {
+    cat: "corporate", tall: true, video: "/media/portfolio/setup-lighting-loadin.mp4",
+    img: "/media/portfolio/setup-lighting-loadin.jpg",
+    title: "Lighting & Load-In", label: "Corporate",
+    brief: "Par-can lighting stands and cooling fans staged beside the load-in truck, ready to be positioned.",
+  },
+  {
+    cat: "corporate", tall: true, video: "/media/portfolio/setup-sound-speakers.mp4",
+    img: "/media/portfolio/setup-sound-speakers.jpg",
+    title: "Sound Speaker Placement", label: "Corporate",
+    brief: "Speakers going up on stands in the courtyard while the equipment truck is still being unloaded.",
+  },
 );
 
 export const filters = [
